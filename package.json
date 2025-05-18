@@ -16,6 +16,7 @@
     "gsap": "^3.13.0",
     "next": "15.3.2",
     "react": "^19.0.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
     "react-responsive": "^10.0.1",
     "three": "^0.176.0"
@@ -30,5 +31,6 @@
     "eslint-config-next": "15.3.2",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
