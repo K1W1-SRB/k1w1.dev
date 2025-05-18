@@ -3,6 +3,7 @@ import ShowcaseSection from "../sections/ShowcaseSection";
 import NavBar from "../components/NavBar";
 import ExperienceSection from "../sections/ExperienceSection";
 import TechnologiesSection from "../sections/Technologies";
+import Contact from "../sections/Contact";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ShowcaseSection />
       <ExperienceSection />
       <TechnologiesSection />
+      <Contact />
     </>
   );
 }
