@@ -1,5 +1,7 @@
 import React from 'react'
 import { words } from '@/constants'
+import Button from '@/components/Button'
+import HeroExperience from '@/components/heromodel/HeroExperience'
 
 function Hero() {
   return (
@@ -23,9 +25,22 @@ function Hero() {
                     </h1>
                     <h1>That just work</h1>    
                    
-                </div> <p>Digital craftsmanship for real-world software</p>
+                </div> 
+                <p className='text-white md:text-xl relative z-10 pointer-events-none' >Digital craftsmanship for real-world software</p>
+               <Button
+                text="See My Work"
+                className="md:w-80 md:h-16 w-60 h-12"
+                id="counter"
+                />
                 </div>
             </header>
+
+            <figure>
+                <div className='hero-3d-layout border-red-200 border-2'>
+                    <HeroExperience />
+                </div>
+            </figure>
+
         </div>
     </section>
   )
