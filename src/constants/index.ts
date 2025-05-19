@@ -14,7 +14,7 @@ export const counterItems = [
   { value: 3, suffix: "+", label: "Years of Experience" },
   { value: 3, suffix: "+", label: "Satisfied Clients" },
   { value: 5, suffix: "+", label: "Complete Projects" },
-  { value: 15, suffix: "+", label: "Years of Experience" },
+  { value: 9000, suffix: "+", label: "Git Commits" },
 ];
 
 export const navLinks = [
