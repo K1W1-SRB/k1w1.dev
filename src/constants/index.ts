@@ -1,5 +1,3 @@
-import { label } from "three/tsl";
-
 export const words = [
   { text: "Websites", icon: "/images/globe.svg" },
   { text: "API`s", icon: "/images/concepts.svg" },

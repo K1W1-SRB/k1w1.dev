@@ -29,11 +29,8 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error(
-      "SendGrid Error:",
-      error?.response?.body || error.message || error
-    );
+  } catch (error: unknown) {
+    console.error("SendGrid Error:", error);
     return NextResponse.json(
       { success: false, error: "Email failed to send" },
       { status: 500 }
