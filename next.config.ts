@@ -1,8 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  output: "standalone",
-  hostname: "0.0.0.0",
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

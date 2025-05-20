@@ -19,7 +19,7 @@ ENV PORT=3000
 RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
 
 COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/ ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # ✅ Give /app ownership to the nextjs user
@@ -29,4 +29,4 @@ USER nextjs
 
 EXPOSE 3000
 
-CMD ["node", ".next/standalone/server.js"]
+CMD ["npm", "start"]
