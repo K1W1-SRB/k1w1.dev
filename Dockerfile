@@ -1,33 +1,33 @@
-# Install dependencies only when needed
-FROM node:20-alpine AS deps
+# Base image
+FROM node:20-alpine AS base
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
+
+# Dependencies
+FROM base AS deps
 COPY package.json package-lock.json* ./
 RUN npm install
 
-# Rebuild the source code only when needed
-FROM node:20-alpine AS builder
-WORKDIR /app
+# Build
+FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-# Production image, copy all the files and run next
-FROM node:20-alpine AS runner
-WORKDIR /app
+# Production runner
+FROM base AS runner
 
 ENV NODE_ENV=production
 ENV PORT=3000
 
 RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
 
+WORKDIR /app
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
-
 EXPOSE 3000
 
-# ✅ FIX:
 CMD ["node", ".next/standalone/server.js"]
