@@ -25,39 +25,39 @@ export const navLinks = [
 export const expCards = [
   {
     review:
-      "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
+      "Sebastian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
+    imgPath: "/images/BG.png",
+    logoPath: "/images/content.png",
     title: "Frontend Developer",
     date: "January 2023 - Present",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
+      "Developed and maintained user-facing features for the BookGusto website.",
       "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
       "Optimized web applications for maximum speed and scalability.",
     ],
   },
   {
     review:
-      "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
+      "Sebastian contributions to teamtels's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
+    imgPath: "/images/Logo Transparent.png",
+    logoPath: "/images/Teamtel.png",
     title: "Full Stack Developer",
     date: "June 2020 - December 2023",
     responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-      "Contributed to open-source projects that were used with the Docker ecosystem.",
+      "Led the development of Teamtels's web applications, focusing on scalability.",
+      "Worked on CallFlow Builder aspect of the application",
+      "Contributed to planing and design of application",
     ],
   },
   {
     review:
-      "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
+      "Sebastians work on fretvault mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
+    imgPath: "/images/fretvault-full.png",
+    logoPath: "/images/fretvault.png",
     title: "React Native Developer",
     date: "March 2019 - May 2020",
     responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
+      "Built cross-platform mobile apps using React Native, integrating with fretvault's backend services.",
       "Improved app performance and user experience through code optimization and testing.",
       "Coordinated with the product team to implement features based on feedback.",
     ],
