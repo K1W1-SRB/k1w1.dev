@@ -39,7 +39,7 @@ export const expCards = [
   {
     review:
       "Sebastian contributions to teamtels's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: "/images/Logo Transparent.png",
+    imgPath: "/images/Logo transparent.png",
     logoPath: "/images/Teamtel.png",
     title: "Full Stack Developer",
     date: "June 2020 - December 2023",
