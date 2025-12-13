@@ -48,27 +48,26 @@ function ShowcaseSection() {
           {/*LEFT SIDE*/}
           <div className="first-project-wrapper" ref={project1Ref}>
             <div className="image-wrapper">
-              <img src="/images/project1.png" alt="First Project" />
+              <img className="" src="/images/teamtel-promo.png" alt="First Project" />
             </div>
             <div className="text-content">
-              <h2>TeamTel fastest way to make a teams voice system</h2>
+              <h2>TeamTel fastest way to ship a teams voice system</h2>
               <p className="text-white-50 md:text-xl">
-                TeamTel is a company i built with using nextjs nestjs
-                tailwindcss using tools like reactflow teams voice API
+                 TeamTel is a powerful platform built by me and my co-founder to simplify and accelerate the creation of Microsoft Teams voice systems. With an intuitive call flow builder and easy-to-use forms, TeamTel enables IT teams and service providers to design, configure, and deploy complete Teams voice setups in record time—without complex manual configurations.
               </p>
             </div>
           </div>
           {/*RIGHT SIDE*/}
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={project2Ref}>
-              <div className="image-wrapper bg-[#ffefdb]">
-                <img src="/images/project2.png" alt="Second Project" />
+              <div className="">
+                <img src="/images/fretvault-promo.png" alt="Second Project" />
               </div>
               <h2>FretVault the ultimate guitar second brain</h2>
             </div>
             <div className="project" ref={project3Ref}>
-              <div className="image-wrapper bg-[#ffefdb]">
-                <img src="/images/project2.png" alt="Second Project" />
+              <div className="">
+                <img src="/images/bg-promo.png" alt="Second Project" />
               </div>
               <h2>BookGusto Restaurant Management System</h2>
             </div>
