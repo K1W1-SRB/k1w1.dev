@@ -24,9 +24,9 @@ function HeroExperience() {
       />
 
       <group
-        scale={mobile ? 0.7 : 1.7}
+        scale={mobile ? 0.55 : 1.3}
         position={[0, -0.5, 0]}
-        rotation={[1, 0, 0.5]}
+        rotation={[-0.94, 0.25, 0]}
       >
         <K1W1 />
       </group>

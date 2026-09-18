@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1d1404;
-  --foreground: #171717;
+  --background: #212121;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -10,13 +10,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #212121;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -129,7 +122,7 @@ section {
     }
 
     .logo {
-      @apply text-white-50 text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-105;
+      @apply text-white text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-105;
     }
 
     nav.desktop {
@@ -139,7 +132,7 @@ section {
         @apply flex space-x-8;
 
         li {
-          @apply text-white-50 relative;
+          @apply text-white relative;
 
           span {
             @apply transition-colors duration-300 hover:text-white;
@@ -210,6 +203,10 @@ section {
       h2 {
         @apply text-lg md:text-xl lg:text-2xl font-semibold mt-5;
       }
+
+      p {
+        @apply text-white-50 text-sm mt-2 line-clamp-2;
+      }
     }
   }
 
@@ -221,18 +218,18 @@ section {
     @apply px-4 py-4 rounded-lg bg-black-200 flex justify-center items-center relative cursor-pointer overflow-hidden;
 
     .bg-circle {
-      @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2 
+      @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2
         w-[120%] h-[120%] group-hover:size-10 group-hover:right-10
-        rounded-full bg-white-50 transition-all duration-500;
+        rounded-full bg-white transition-all duration-500;
     }
 
     .text {
       @apply uppercase md:text-lg text-black transition-all duration-500
-        group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
+        group-hover:text-white group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
     }
 
     .arrow-wrapper {
-      @apply group-hover:bg-white-50 size-10 rounded-full absolute right-10 top-1/2 
+      @apply group-hover:bg-white size-10 rounded-full absolute right-10 top-1/2
         -translate-y-1/2 flex justify-center items-center overflow-hidden;
 
       img {
