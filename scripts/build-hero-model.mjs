@@ -30,9 +30,9 @@ const { paths } = new SVGLoader().parse(svgText);
 const extrudeSettings = {
   depth: 42,
   bevelEnabled: true,
-  bevelThickness: 5,
-  bevelSize: 4,
-  bevelSegments: 4,
+  bevelThickness: 4,
+  bevelSize: 3,
+  bevelSegments: 6,
   curveSegments: 32,
 };
 
