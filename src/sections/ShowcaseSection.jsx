@@ -6,19 +6,15 @@ import React, { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ShowcaseSection() {
+function ShowcaseSection({ projects }) {
+  const [featuredProject, ...secondaryProjects] = projects;
   const sectionRef = useRef(null);
-  const project1Ref = useRef(null);
-  const project2Ref = useRef(null);
-  const project3Ref = useRef(null);
+  const featuredRef = useRef(null);
+  const listRefs = useRef([]);
+  listRefs.current = [];
 
   useGSAP(() => {
-    const projects = [
-      project1Ref.current,
-      project2Ref.current,
-      project3Ref.current,
-    ];
-    projects.forEach((project, index) => {
+    [featuredRef.current, ...listRefs.current].forEach((project, index) => {
       gsap.fromTo(
         project,
         { y: 50, opacity: 0 },
@@ -41,36 +37,70 @@ function ShowcaseSection() {
       { opacity: 1, duration: 1.5 }
     );
   }, []);
+
+  if (!featuredProject) return null;
+
   return (
     <div id="work" ref={sectionRef} className="app-showcase">
       <div className="w-full">
         <div className="showcaselayout">
           {/*LEFT SIDE*/}
-          <div className="first-project-wrapper" ref={project1Ref}>
+          <div className="first-project-wrapper" ref={featuredRef}>
             <div className="image-wrapper">
-              <img className="" src="/images/teamtel-promo.png" alt="First Project" />
+              <img src={featuredProject.image} alt={featuredProject.title} />
             </div>
             <div className="text-content">
-              <h2>TeamTel fastest way to ship a teams voice system</h2>
+              <div className="badges">
+                <span className="text-xs px-3 py-1 rounded-full border border-white-50/30 text-white-50">
+                  {featuredProject.status}
+                </span>
+              </div>
+              <h2>{featuredProject.title}</h2>
               <p className="text-white-50 md:text-xl">
-                 TeamTel is a powerful platform built by me and my co-founder to simplify and accelerate the creation of Microsoft Teams voice systems. With an intuitive call flow builder and easy-to-use forms, TeamTel enables IT teams and service providers to design, configure, and deploy complete Teams voice setups in record time—without complex manual configurations.
+                {featuredProject.description}
               </p>
+              {featuredProject.link && (
+                <a
+                  href={featuredProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-sm underline text-white-50 hover:text-white"
+                >
+                  Visit site →
+                </a>
+              )}
             </div>
           </div>
           {/*RIGHT SIDE*/}
           <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={project2Ref}>
-              <div className="">
-                <img src="/images/fretvault-promo.png" alt="Second Project" />
+            {secondaryProjects.map((project) => (
+              <div
+                className="project"
+                key={project.id}
+                ref={(el) => listRefs.current.push(el)}
+              >
+                <div className="">
+                  <img src={project.image} alt={project.title} />
+                </div>
+                <div className="badges">
+                  <span className="text-xs px-3 py-1 rounded-full border border-white-50/30 text-white-50">
+                    {project.status}
+                  </span>
+                </div>
+                <h2>{project.title}</h2>
+                <p>{project.description}</p>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block text-sm underline text-white-50 hover:text-white"
+                  >
+                    Visit site →
+                  </a>
+                )}
               </div>
-              <h2>FretVault the ultimate guitar second brain</h2>
-            </div>
-            <div className="project" ref={project3Ref}>
-              <div className="">
-                <img src="/images/bg-promo.png" alt="Second Project" />
-              </div>
-              <h2>BookGusto Restaurant Management System</h2>
-            </div>
+            ))}
           </div>
         </div>
       </div>

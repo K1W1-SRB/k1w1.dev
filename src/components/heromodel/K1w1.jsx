@@ -1,35 +1,24 @@
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function K1W1(props) {
-  const { nodes, materials } = useGLTF("/models/k1w1.glb");
+export function K1W1({ mobile, ...props }) {
+  const { nodes } = useGLTF("/models/k1w1.glb");
   return (
     <group {...props} dispose={null}>
-      <mesh
-        geometry={nodes.Curve001.geometry}
-        material={materials.SVGMat}
-        scale={[7.311, 1, 7.311]}
-      />
-      <mesh
-        geometry={nodes.Curve002.geometry}
-        material={materials.SVGMat}
-        scale={[7.311, 1, 7.311]}
-      />
-      <mesh
-        geometry={nodes.Curve003.geometry}
-        material={materials.SVGMat}
-        scale={[7.311, 1, 7.311]}
-      />
-      <mesh
-        geometry={nodes.Curve004.geometry}
-        material={materials.SVGMat}
-        scale={[7.311, 1, 7.311]}
-      />
-      <mesh
-        geometry={nodes.Curve005.geometry}
-        material={materials.SVGMat}
-        scale={[7.311, 1, 7.311]}
-      />
+      <mesh geometry={nodes.K1W1Logo.geometry}>
+        {mobile ? (
+          <meshStandardMaterial color="#dcdce0" roughness={0.55} metalness={0.15} envMapIntensity={0.8} />
+        ) : (
+          <meshPhysicalMaterial
+            color="#e8e8ec"
+            roughness={0.28}
+            metalness={0.65}
+            envMapIntensity={1.4}
+            clearcoat={0.4}
+            clearcoatRoughness={0.25}
+          />
+        )}
+      </mesh>
     </group>
   );
 }
