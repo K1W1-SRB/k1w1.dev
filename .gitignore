@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# admin content store (local dev runtime data — seed lives in data/seed and is tracked)
+/data/content.json
+/data/content.json.tmp
+/uploads/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

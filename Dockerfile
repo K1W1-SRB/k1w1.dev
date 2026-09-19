@@ -20,11 +20,18 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV SENDGRID_API_KEY=${SENDGRID_API_KEY}
+ENV ADMIN_PASSWORD=${ADMIN_PASSWORD}
+ENV SESSION_SECRET=${SESSION_SECRET}
+ENV DATA_DIR=/app/data
+ENV UPLOADS_DIR=/app/uploads
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/data/seed ./data/seed
+
+RUN mkdir -p /app/data /app/uploads && chown -R nextjs:nodejs /app/data /app/uploads
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static

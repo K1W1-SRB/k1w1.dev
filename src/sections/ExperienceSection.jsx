@@ -4,12 +4,11 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TitleHeader from "../components/TitleHeader";
-import { expCards } from "@/constants";
 import GlowCard from "../components/glowcard";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ExperienceSection = () => {
+const ExperienceSection = ({ expCards }) => {
   useGSAP(() => {
     // Loop through each timeline card and animate them in
     // as the user scrolls to each card
@@ -103,7 +102,7 @@ const ExperienceSection = () => {
         <div className="mt-32 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10">
             {expCards.map((card) => (
-              <div key={card.title} className="exp-card-wrapper">
+              <div key={card.id} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
                   <GlowCard card={card}>
                     <div>

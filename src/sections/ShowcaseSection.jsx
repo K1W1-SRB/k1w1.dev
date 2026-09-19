@@ -3,13 +3,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
-import { projects } from "@/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const [featuredProject, ...secondaryProjects] = projects;
-
-function ShowcaseSection() {
+function ShowcaseSection({ projects }) {
+  const [featuredProject, ...secondaryProjects] = projects;
   const sectionRef = useRef(null);
   const featuredRef = useRef(null);
   const listRefs = useRef([]);
@@ -39,6 +37,9 @@ function ShowcaseSection() {
       { opacity: 1, duration: 1.5 }
     );
   }, []);
+
+  if (!featuredProject) return null;
+
   return (
     <div id="work" ref={sectionRef} className="app-showcase">
       <div className="w-full">
@@ -58,6 +59,16 @@ function ShowcaseSection() {
               <p className="text-white-50 md:text-xl">
                 {featuredProject.description}
               </p>
+              {featuredProject.link && (
+                <a
+                  href={featuredProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-sm underline text-white-50 hover:text-white"
+                >
+                  Visit site →
+                </a>
+              )}
             </div>
           </div>
           {/*RIGHT SIDE*/}
@@ -65,7 +76,7 @@ function ShowcaseSection() {
             {secondaryProjects.map((project) => (
               <div
                 className="project"
-                key={project.title}
+                key={project.id}
                 ref={(el) => listRefs.current.push(el)}
               >
                 <div className="">
@@ -78,6 +89,16 @@ function ShowcaseSection() {
                 </div>
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block text-sm underline text-white-50 hover:text-white"
+                  >
+                    Visit site →
+                  </a>
+                )}
               </div>
             ))}
           </div>
