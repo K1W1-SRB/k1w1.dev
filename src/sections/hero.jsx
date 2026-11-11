@@ -48,7 +48,7 @@ function Hero() {
             <Button
               text="See My Work"
               className="md:w-80 md:h-16 w-60 h-12"
-              id="work"
+              href="/work"
             />
           </div>
         </header>

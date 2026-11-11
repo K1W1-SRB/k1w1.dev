@@ -9,11 +9,7 @@ export const words = [
 ];
 
 export const navLinks = [
-  { name: "Work", link: "#work" },
-  { name: "Experience", link: "#experience" },
-  { name: "Skills", link: "#skills" },
-  { name: "Contact", link: "#contact" },
+  { name: "Work", link: "/work" },
+  { name: "Services", link: "/services" },
+  { name: "Blog", link: "/blog" },
 ];
-
-// projects and expCards now live in data/content.json (seeded from data/seed/content.seed.json),
-// managed via /admin. See src/lib/content-store.ts.

@@ -5,87 +5,184 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { SESSION_COOKIE } from "./auth";
 import {
-  deleteExpCard as deleteExpCardFromStore,
+  deletePost as deletePostFromStore,
   deleteProject as deleteProjectFromStore,
   newId,
-  reorderExpCard,
+  normalizePost,
+  normalizeProject,
+  normalizeServices,
   reorderProject,
-  upsertExpCard,
+  saveServices as saveServicesToStore,
+  SERVICE_SLUGS,
+  slugify,
+  SlugTakenError,
+  upsertPost,
   upsertProject,
-  type ExpCard,
-  type Project,
 } from "./content-store";
 
 function str(formData: FormData, key: string): string {
   return (formData.get(key) as string | null)?.trim() ?? "";
 }
 
-export async function saveProject(formData: FormData) {
-  const id = str(formData, "id") || newId();
-  const project: Project = {
-    id,
-    title: str(formData, "title"),
-    description: str(formData, "description"),
-    image: str(formData, "image"),
-    status: str(formData, "status"),
-    link: str(formData, "link"),
-    published: formData.get("published") === "on",
-  };
+/** Parses a JSON-encoded list from a RepeaterField hidden input. */
+function jsonList(formData: FormData, key: string): Record<string, unknown>[] {
+  try {
+    const parsed = JSON.parse(str(formData, key) || "[]");
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
 
-  await upsertProject(project);
-  revalidatePath("/");
-  revalidatePath("/admin/projects");
+/** Drops rows where every string field is blank. */
+function nonEmpty<T extends Record<string, unknown>>(rows: T[]): T[] {
+  return rows.filter((row) => Object.values(row).some((v) => (typeof v === "string" ? v.trim() : v)));
+}
+
+function lines(value: string): string[] {
+  return value
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+}
+
+/** Revalidates every public page that can show content. Cheap, and avoids stale pages. */
+function revalidatePublic() {
+  revalidatePath("/", "layout");
+}
+
+export type FormState = { error: string } | null;
+
+// ---------- Projects ----------
+
+export async function saveProject(_prev: FormState, formData: FormData): Promise<FormState> {
+  const id = str(formData, "id") || newId();
+  const title = str(formData, "title");
+  const slug = slugify(str(formData, "slug") || title);
+  if (!slug) return { error: "Please give the project a title or URL slug." };
+
+  const hasCaseStudy = formData.get("hasCaseStudy") === "on";
+
+  const project = normalizeProject({
+    id,
+    slug,
+    title,
+    summary: str(formData, "summary"),
+    image: str(formData, "image"),
+    imageAlt: str(formData, "imageAlt"),
+    status: str(formData, "status"),
+    role: str(formData, "role"),
+    year: str(formData, "year"),
+    liveUrl: str(formData, "liveUrl"),
+    featured: formData.get("featured") === "on",
+    published: formData.get("published") === "on",
+    seoTitle: str(formData, "seoTitle"),
+    seoDescription: str(formData, "seoDescription"),
+    caseStudy: hasCaseStudy
+      ? {
+          problem: str(formData, "problem"),
+          features: nonEmpty(jsonList(formData, "features")),
+          decisions: nonEmpty(jsonList(formData, "decisions")),
+          stack: nonEmpty(jsonList(formData, "stack")),
+          outcomeTitle: str(formData, "outcomeTitle"),
+          outcome: str(formData, "outcome"),
+          testimonial: { quote: str(formData, "testimonialQuote"), author: str(formData, "testimonialAuthor") },
+          ctaText: str(formData, "ctaText"),
+          ctaHref: str(formData, "ctaHref"),
+        }
+      : null,
+  });
+
+  try {
+    await upsertProject(project);
+  } catch (err) {
+    if (err instanceof SlugTakenError) return { error: err.message };
+    throw err;
+  }
+
+  revalidatePublic();
   redirect("/admin/projects");
 }
 
 export async function removeProject(id: string) {
   await deleteProjectFromStore(id);
-  revalidatePath("/");
-  revalidatePath("/admin/projects");
+  revalidatePublic();
 }
 
 export async function moveProject(id: string, direction: "up" | "down") {
   await reorderProject(id, direction);
-  revalidatePath("/");
-  revalidatePath("/admin/projects");
+  revalidatePublic();
 }
 
-export async function saveExpCard(formData: FormData) {
+// ---------- Blog ----------
+
+export async function savePost(_prev: FormState, formData: FormData): Promise<FormState> {
   const id = str(formData, "id") || newId();
-  const responsibilities = str(formData, "responsibilities")
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean);
+  const title = str(formData, "title");
+  const slug = slugify(str(formData, "slug") || title);
+  if (!slug) return { error: "Please give the post a title or URL slug." };
 
-  const card: ExpCard = {
+  const post = normalizePost({
     id,
-    review: str(formData, "review"),
-    reviewer: str(formData, "reviewer"),
-    imgPath: str(formData, "imgPath"),
-    logoPath: str(formData, "logoPath"),
-    title: str(formData, "title"),
-    date: str(formData, "date"),
-    responsibilities,
+    slug,
+    title,
+    excerpt: str(formData, "excerpt"),
+    body: (formData.get("body") as string | null) ?? "",
+    coverImage: str(formData, "coverImage"),
+    coverAlt: str(formData, "coverAlt"),
+    tags: str(formData, "tags")
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean),
+    publishedAt: str(formData, "publishedAt"),
+    updatedAt: new Date().toISOString(),
     published: formData.get("published") === "on",
-  };
+    seoDescription: str(formData, "seoDescription"),
+  });
 
-  await upsertExpCard(card);
-  revalidatePath("/");
-  revalidatePath("/admin/experience");
-  redirect("/admin/experience");
+  try {
+    await upsertPost(post);
+  } catch (err) {
+    if (err instanceof SlugTakenError) return { error: err.message };
+    throw err;
+  }
+
+  revalidatePublic();
+  redirect("/admin/blog");
 }
 
-export async function removeExpCard(id: string) {
-  await deleteExpCardFromStore(id);
-  revalidatePath("/");
-  revalidatePath("/admin/experience");
+export async function removePost(id: string) {
+  await deletePostFromStore(id);
+  revalidatePublic();
 }
 
-export async function moveExpCard(id: string, direction: "up" | "down") {
-  await reorderExpCard(id, direction);
-  revalidatePath("/");
-  revalidatePath("/admin/experience");
+// ---------- Services ----------
+
+export async function saveServices(_prev: FormState, formData: FormData): Promise<FormState> {
+  const services = normalizeServices({
+    packages: nonEmpty(jsonList(formData, "packages")).map((p) => ({
+      ...p,
+      id: slugify(typeof p.id === "string" ? p.id : "") || slugify(typeof p.name === "string" ? p.name : ""),
+      includes: lines(typeof p.includes === "string" ? p.includes : ""),
+    })),
+    faq: nonEmpty(jsonList(formData, "faq")),
+    process: nonEmpty(jsonList(formData, "process")),
+    services: SERVICE_SLUGS.map((slug) => ({
+      slug,
+      title: str(formData, `svc-${slug}-title`),
+      summary: str(formData, `svc-${slug}-summary`),
+      intro: str(formData, `svc-${slug}-intro`),
+      bullets: lines(str(formData, `svc-${slug}-bullets`)),
+      proofProjectSlug: str(formData, `svc-${slug}-proof`),
+    })),
+  });
+
+  await saveServicesToStore(services);
+  revalidatePublic();
+  return { error: "" };
 }
+
+// ---------- Auth ----------
 
 export async function logoutAdmin() {
   const cookieStore = await cookies();

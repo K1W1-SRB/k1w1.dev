@@ -1,5 +1,4 @@
-import React from "react";
-import TitleHeader from "../components/TitleHeader";
+import Section from "../components/layout/Section";
 import {
   SiFigma,
   SiTypescript,
@@ -7,8 +6,6 @@ import {
   SiNextdotjs,
   SiTailwindcss,
   SiGit,
-  SiSupabase,
-  SiAppwrite,
   SiNestjs,
   SiNodedotjs,
 } from "react-icons/si";
@@ -16,88 +13,30 @@ import { TbBrandReactNative } from "react-icons/tb";
 
 // TODO: add the technologies PT2C is built with.
 const technologies = [
-  {
-    name: "Figma",
-    desc: "Design Tool",
-    icon: SiFigma,
-    glow: "bg-pink-500",
-  },
-  {
-    name: "TypeScript",
-    desc: "JavaScript, but better",
-    icon: SiTypescript,
-    glow: "bg-blue-500",
-  },
-  {
-    name: "React",
-    desc: "JavaScript Library",
-    icon: SiReact,
-    glow: "bg-cyan-400",
-  },
-  {
-    name: "React Native",
-    desc: "Mobile apps (used for FretVault)",
-    icon: TbBrandReactNative,
-    glow: "bg-sky-500",
-  },
-  {
-    name: "NextJS",
-    desc: "React framework",
-    icon: SiNextdotjs,
-    glow: "bg-white",
-  },
-  {
-    name: "Tailwind",
-    desc: "CSS framework",
-    icon: SiTailwindcss,
-    glow: "bg-teal-400",
-  },
-  {
-    name: "Git",
-    desc: "Version control",
-    icon: SiGit,
-    glow: "bg-orange-500",
-  },
-  {
-    name: "NodeJS",
-    desc: "JavaScript runtime environment",
-    icon: SiNodedotjs,
-    glow: "bg-green-600",
-  },
-  {
-    name: "NestJS",
-    desc: "Node Framework",
-    icon: SiNestjs,
-    glow: "bg-red-400",
-  },
+  { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
+  { name: "React", icon: SiReact, color: "text-cyan-400" },
+  { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
+  { name: "React Native", icon: TbBrandReactNative, color: "text-sky-400" },
+  { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
+  { name: "NestJS", icon: SiNestjs, color: "text-red-400" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
+  { name: "Figma", icon: SiFigma, color: "text-pink-400" },
+  { name: "Git", icon: SiGit, color: "text-orange-500" },
 ];
 
+/** The stack I build with, as a compact row of chips. */
 function TechnologiesSection() {
   return (
-    <div id="skills" className="section-padding bg-[#212121] text-white">
-      <div className="max-w-5xl mx-auto px-4">
-        <TitleHeader title="My Technologies" sub="👨‍💻 My Current TechStack" />
-        <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {technologies.map(({ name, desc, icon: Icon, glow }) => (
-            <div
-              key={name}
-              className="flex items-center gap-4 p-4 bg-zinc-900 rounded-lg shadow hover:bg-zinc-800 transition"
-            >
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                <div
-                  className={`absolute inset-0 rounded-md ${glow} blur-sm opacity-60`}
-                />
-                <Icon size={24} />
-              </div>
-              <div>
-                <p className="font-semibold">{name}</p>
-                <p className="text-sm text-gray-400">{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <Section id="stack" eyebrow="Stack" title="What I build with">
+      <ul className="flex flex-wrap gap-3">
+        {technologies.map(({ name, icon: Icon, color }) => (
+          <li key={name} className="flex items-center gap-2 rounded-full border border-black-50 bg-zinc-900 px-4 py-2">
+            <Icon size={18} className={color} aria-hidden="true" />
+            <span className="text-sm font-medium">{name}</span>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 }
 

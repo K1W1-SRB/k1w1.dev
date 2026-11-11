@@ -2,72 +2,379 @@
   "projects": [
     {
       "id": "pt2c",
-      "title": "PT2C: TODO title",
-      "description": "TODO: one or two sentences on what PT2C does and who it's for.",
+      "slug": "pt2c",
+      "title": "PT2C",
+      "summary": "TODO: one line on what PT2C is and who it's for.",
       "image": "",
+      "imageAlt": "",
       "status": "Live",
-      "link": "",
-      "published": false
+      "role": "Founder & full-stack developer",
+      "year": "TODO",
+      "liveUrl": "",
+      "featured": true,
+      "published": false,
+      "seoTitle": "",
+      "seoDescription": "",
+      "caseStudy": {
+        "problem": "TODO: who PT2C is for, and what was wrong with the existing options (price, complexity, what they forced on people).",
+        "features": [
+          {
+            "title": "TODO: key feature",
+            "body": "TODO: what it does and why it matters to the user.",
+            "image": "",
+            "imageAlt": ""
+          }
+        ],
+        "decisions": [
+          {
+            "title": "£12 pricing",
+            "body": "TODO: why £12, what you compared it against, and what that price lets you (and the user) avoid."
+          },
+          {
+            "title": "What I deliberately left out",
+            "body": "TODO: the features you chose not to build, and why leaving them out made the product better."
+          }
+        ],
+        "stack": [
+          {
+            "name": "TODO",
+            "why": "TODO: one sentence on why you chose it."
+          }
+        ],
+        "outcomeTitle": "Outcome",
+        "outcome": "TODO: users, feedback or results so far.",
+        "testimonial": {
+          "quote": "",
+          "author": ""
+        },
+        "ctaText": "Need a web app like this for your business?",
+        "ctaHref": "/services/web-apps"
+      }
     },
     {
       "id": "bookgusto",
-      "title": "BookGusto: restaurant landing page",
-      "description": "Responsive marketing site with a CMS and a near-perfect Lighthouse score.",
+      "slug": "bookgusto",
+      "title": "BookGusto",
+      "summary": "A fast, responsive marketing site for a restaurant booking product, with a CMS the team can edit themselves.",
       "image": "/images/bookgusto-promo.png",
+      "imageAlt": "BookGusto restaurant landing page shown on desktop",
       "status": "Shipped",
-      "link": "",
-      "published": true
+      "role": "Frontend developer",
+      "year": "2023",
+      "liveUrl": "",
+      "featured": false,
+      "published": true,
+      "seoTitle": "BookGusto – Restaurant Landing Page Case Study",
+      "seoDescription": "How I built a fast, responsive marketing site with a CMS for BookGusto, a restaurant booking product, working alongside its UI/UX designers.",
+      "caseStudy": {
+        "problem": "BookGusto needed a marketing site to introduce its restaurant booking product. It had to look polished on every screen size, load quickly, and let the team update copy without a developer.",
+        "features": [
+          {
+            "title": "Responsive landing page",
+            "body": "Built from the designers' layouts, tuned to work cleanly from small phones up to wide desktops.",
+            "image": "/images/bookgusto-landing.png",
+            "imageAlt": "BookGusto landing page hero section"
+          },
+          {
+            "title": "Editable content",
+            "body": "Copy and sections are managed through a CMS, so the team can make changes without a code deploy.",
+            "image": "",
+            "imageAlt": ""
+          }
+        ],
+        "decisions": [
+          {
+            "title": "Performance first",
+            "body": "Kept the page lean (optimised images, minimal JavaScript) so it scored near-perfect on Lighthouse. For a landing page, speed is part of the pitch."
+          }
+        ],
+        "stack": [
+          {
+            "name": "TODO",
+            "why": "TODO: confirm the stack used for BookGusto."
+          }
+        ],
+        "outcomeTitle": "Outcome",
+        "outcome": "The landing page shipped. The wider restaurant management system it was meant to support didn't move past that stage.",
+        "testimonial": {
+          "quote": "",
+          "author": ""
+        },
+        "ctaText": "Need a website like this for your business?",
+        "ctaHref": "/services/websites"
+      }
     },
     {
       "id": "fretvault",
+      "slug": "fretvault",
       "title": "FretVault",
-      "description": "React Native app for guitarists to log gear, tabs and practice notes (university project).",
+      "summary": "A cross-platform React Native app for guitarists to log their gear, tabs and practice notes in one place.",
       "image": "/images/fretvault-promo.png",
+      "imageAlt": "FretVault mobile app screens",
       "status": "University project",
-      "link": "",
-      "published": true
+      "role": "React Native developer",
+      "year": "2019–2020",
+      "liveUrl": "",
+      "featured": false,
+      "published": true,
+      "seoTitle": "FretVault – React Native App Case Study",
+      "seoDescription": "FretVault is a cross-platform React Native app I built for guitarists to log gear, tabs and practice notes, and what it taught me about product thinking.",
+      "caseStudy": {
+        "problem": "Guitarists keep track of their gear, tabs and practice notes across notebooks, bookmarks and random apps. FretVault set out to put it all in one place on their phone.",
+        "features": [
+          {
+            "title": "Gear, tabs and practice log",
+            "body": "One app to record your instruments and gear, save tabs, and keep notes on what you practised.",
+            "image": "/images/fretvault-full.png",
+            "imageAlt": "FretVault screens showing gear and practice logs"
+          }
+        ],
+        "decisions": [
+          {
+            "title": "Cross-platform from day one",
+            "body": "Built with React Native so one codebase runs on both iOS and Android."
+          }
+        ],
+        "stack": [
+          {
+            "name": "React Native",
+            "why": "One codebase for iOS and Android."
+          }
+        ],
+        "outcomeTitle": "What I learned",
+        "outcome": "TODO: what FretVault taught you, e.g. scoping, performance tuning, and why it never got polished enough to open-source.",
+        "testimonial": {
+          "quote": "",
+          "author": ""
+        },
+        "ctaText": "Have an app idea you want to build?",
+        "ctaHref": "/services/web-apps"
+      }
     }
   ],
-  "expCards": [
+  "posts": [
     {
-      "id": "exp-pt2c",
-      "review": "",
-      "reviewer": "",
-      "imgPath": "",
-      "logoPath": "",
-      "title": "TODO: your role, PT2C",
-      "date": "TODO",
-      "responsibilities": [
-        "TODO: what you built for PT2C and the stack it runs on."
+      "id": "why-i-built-a-12-pound-app",
+      "slug": "why-i-built-a-12-pound-app-for-personal-trainers",
+      "title": "Why I built a £12/month app for personal trainers",
+      "excerpt": "The story behind PT2C: the problem personal trainers kept running into, why existing tools didn't fit, and why I priced it at £12 a month.",
+      "seoDescription": "The story behind PT2C, a £12/month app for personal trainers: the problem it solves, why existing tools didn't fit, and how I chose the price.",
+      "tags": [
+        "PT2C",
+        "product",
+        "pricing"
       ],
+      "body": "> **Outline: replace the prompts with your story.** Aim for 1,000–1,500 words, in your own voice.\n\n## The moment I noticed the problem\n- TODO: what did you see trainers struggling with? Was it a specific trainer or conversation?\n- TODO: what were they using instead: spreadsheets, WhatsApp, PDFs, a big platform?\n\n## Why the existing options didn't fit\n- TODO: name the kinds of tools (no need to trash competitors) and what was wrong: price, complexity, features trainers never used.\n- TODO: a concrete example, e.g. \"paying £X a month for a tool where they used two features\".\n\n## What I decided to build (and not build)\n- TODO: the core job PT2C does in one sentence.\n- TODO: the features you deliberately left out, and why leaving them out helps.\n\n## Why £12 a month\n- TODO: how you landed on £12: what you compared it against, what it needs to cover, why it's an easy yes for a trainer.\n- TODO: anything you'd do differently on pricing.\n\n## Where it is now\n- TODO: users, feedback, a favourite quote from a trainer (with permission).\n\n## What this means if you run a small business\n- TODO: 2–3 sentences linking the story to your clients: you build focused software that solves one problem well, at a price that makes sense.\n",
+      "coverImage": "",
+      "coverAlt": "",
+      "publishedAt": "2026-11-11",
+      "updatedAt": "2026-11-11T00:00:00.000Z",
       "published": false
     },
     {
-      "id": "exp-bookgusto",
-      "review": "",
-      "imgPath": "/images/bookgusto-landing.png",
-      "logoPath": "/images/bookgusto-logo.png",
-      "title": "Frontend Developer, BookGusto",
-      "date": "January 2023",
-      "responsibilities": [
-        "Built the BookGusto marketing landing page with a CMS.",
-        "Worked with UI/UX designers on a responsive, fast-loading layout."
+      "id": "web-app-cost-uk",
+      "slug": "how-much-does-it-cost-to-build-a-web-app-uk",
+      "title": "How much does it cost to build a web app in the UK?",
+      "excerpt": "An honest breakdown of what drives the cost of a web app, how freelancers, agencies and off-the-shelf tools compare, and how to keep your first version affordable.",
+      "seoDescription": "What does a web app cost to build in the UK? An honest guide to what drives the price, freelancer vs agency, and how to keep your first version affordable.",
+      "tags": [
+        "pricing",
+        "web apps",
+        "small business"
       ],
-      "published": true,
-      "reviewer": ""
+      "body": "\"How much will it cost?\" is the first question almost everyone asks, and the honest answer is: it depends on what you're building. That's not a dodge. Two apps that sound similar can differ in price by a factor of five. This post explains what actually drives the cost, so you can work out a realistic budget before you talk to anyone.\n\n## What you're actually paying for\n\nA web app isn't one thing. The price is the sum of a few building blocks, and each one adds time.\n\n**1. The number of screens and features.** Every screen needs designing, building and testing. A tool with a login, a dashboard and one main feature is a very different job from one with ten user roles and fifty screens.\n\n**2. User accounts and permissions.** Letting people sign up and log in securely is standard now, but it still takes work: password resets, email verification, and different permissions for staff, customers and admins.\n\n**3. Payments.** Taking a one-off payment is fairly simple. Subscriptions, free trials, refunds, invoices and VAT handling add up quickly.\n\n**4. Integrations.** Connecting to other systems (your accounting software, a booking tool, a CRM, an API from your industry) is often where the surprises are. A well-documented integration might take a day. A messy one can take weeks.\n\n**5. Design.** Using a clean, proven layout is quicker than a fully custom design with animations and illustrations. Both are valid; they just cost differently.\n\n**6. What happens after launch.** Hosting, security updates, backups and bug fixes are ongoing costs. Any quote that doesn't mention them is only telling you half the story.\n\n## Rough price ranges\n\n> **TODO: add your own figures here.** Give honest ranges for what you'd charge, and if you include market comparisons, only use numbers you're confident in.\n\n- A simple internal tool or prototype: TODO\n- A web app MVP with accounts and payments: TODO (my Web App MVP package starts at TODO)\n- A larger platform with several user types and integrations: TODO\n- Ongoing hosting, updates and support: TODO per month\n\n## Freelancer, agency or off-the-shelf?\n\n**Off-the-shelf software** is cheapest if it genuinely fits. You pay a monthly fee and get started today. The catch is that you shape your business around the tool, not the other way round. I've written a separate post on [when off-the-shelf is the better choice](/blog/do-you-really-need-a-custom-app).\n\n**An agency** gives you a team: project managers, designers and several developers. That's valuable for large projects, but you're paying for the overhead, and your project may be handed between people.\n\n**A freelancer** usually costs less for the same work, and you deal with the person actually building it. The trade-off is capacity: one person can only take on so much, so it suits focused projects better than huge ones.\n\n## How to keep your first version affordable\n\nThe best way to control cost is to build less, at least at first.\n\n1. **Write down the one job the app must do.** If it only did that, would people still use it? That's your MVP.\n2. **Move everything else to a \"later\" list.** Reports, admin dashboards, integrations and nice-to-haves can follow once real users tell you what they need.\n3. **Use proven building blocks.** Payments, login and email have solid, existing services. Building those from scratch is rarely worth it.\n4. **Agree a fixed scope and price up front.** You should know what you're getting, and what it costs, before work starts.\n\n## The bottom line\n\nA focused first version, built well and launched quickly, nearly always beats a big build that takes a year. If you have an idea and want a realistic number for it, [see my packages](/services) or [get in touch](/contact) and I'll give you an honest estimate.\n",
+      "coverImage": "",
+      "coverAlt": "",
+      "publishedAt": "2026-11-11",
+      "updatedAt": "2026-11-11T00:00:00.000Z",
+      "published": false
     },
     {
-      "id": "exp-fretvault",
-      "review": "",
-      "imgPath": "/images/fretvault-full.png",
-      "logoPath": "/images/fretvault.png",
-      "title": "React Native Developer (University Project)",
-      "date": "March 2019 - May 2020",
-      "responsibilities": [
-        "Built FretVault, a cross-platform app for guitarists to log gear, tabs and practice notes."
+      "id": "custom-vs-off-the-shelf",
+      "slug": "do-you-really-need-a-custom-app",
+      "title": "Do you really need a custom app? When off-the-shelf software is the better choice",
+      "excerpt": "Custom software isn't always the answer. Here's how to tell when an existing tool will do the job better and cheaper, and when building your own really pays off.",
+      "seoDescription": "Custom app or off-the-shelf software? An honest guide for small businesses on when existing tools are the better choice, and when custom development pays off.",
+      "tags": [
+        "small business",
+        "web apps",
+        "advice"
       ],
-      "published": true,
-      "reviewer": ""
+      "body": "I build custom software for a living, so it might seem odd to write a post telling you not to buy it. But I'd rather you spend your money well. A lot of the time, an existing tool will do the job better, sooner and for a fraction of the price.\n\nHere's how I think about it when someone asks me whether they need a custom app.\n\n## When off-the-shelf is the better choice\n\n**Your problem is common.** If thousands of other businesses have the same need, someone has probably built a good tool for it. Selling products online, taking bookings, sending invoices and running a mailing list are all solved problems. Shopify, Squarespace, Calendly-style booking tools, Xero and Mailchimp exist for a reason.\n\n**You need it working this week.** Existing software is ready now. Even a small custom build takes weeks.\n\n**Your budget is tight.** A monthly subscription is far easier on cash flow than a development project, especially while you're still proving the idea.\n\n**You're not sure how it should work yet.** If you don't know the process, a spreadsheet or a no-code tool lets you experiment cheaply. You'll learn what you actually need, and that makes any custom build later much better.\n\n## When custom software pays off\n\n**You're bending your business around the tool.** If your team spends hours on workarounds, copying data between systems or fighting software that \"nearly\" fits, that time has a real cost.\n\n**The software *is* the product.** If you're selling the app itself (a SaaS, a platform, a client portal), you need to own it and control how it works.\n\n**You're paying for lots of features you never use.** Sometimes a focused tool that does one thing well is cheaper over a few years than an expensive platform where you use two features.\n\n**You need things to talk to each other.** If the real problem is connecting several systems, a small custom app in the middle can save a surprising amount of time.\n\n## A quick checklist\n\nAsk yourself:\n\n- Have I tried at least two existing tools properly?\n- Can I describe, in one sentence, what they can't do?\n- Roughly how many hours a month do the workarounds cost us?\n- Will this still matter in two years?\n- Am I happy to pay for hosting and updates once it's built?\n\nIf you answered \"yes\" to the first and can answer the rest clearly, custom software might well be worth it. If not, start with an existing tool. You can always build later, and you'll know far more about what you need.\n\n## When you don't need me\n\nIf an existing tool does 90% of what you need, use it. If you're still working out how your business process runs, start with a spreadsheet. And if you only need a simple brochure site, a good website builder may be all you need.\n\nIf you've weighed it up and still think custom is right, or you'd just like a second opinion, [get in touch](/contact). I'll tell you honestly whether I think you need me.\n",
+      "coverImage": "",
+      "coverAlt": "",
+      "publishedAt": "2026-11-11",
+      "updatedAt": "2026-11-11T00:00:00.000Z",
+      "published": false
+    },
+    {
+      "id": "learned-building-pricing-saas",
+      "slug": "what-i-learned-building-and-pricing-my-own-saas",
+      "title": "What I learned building and pricing my own SaaS",
+      "excerpt": "Lessons from building PT2C end to end: scoping, pricing, getting the first users, and what I'd do differently next time.",
+      "seoDescription": "Lessons from building and pricing my own SaaS, PT2C: scoping a first version, choosing a price, finding early users, and what I'd do differently.",
+      "tags": [
+        "PT2C",
+        "SaaS",
+        "product"
+      ],
+      "body": "> **Outline: replace the prompts with your experience.** This post shows you think about products, not only code. Specific numbers and honest mistakes make it credible.\n\n## 1. Scoping: what made the cut for version one\n- TODO: the feature list you started with, and the much shorter one you shipped.\n- TODO: one feature you were glad you cut.\n\n## 2. Pricing is a product decision\n- TODO: how you chose £12, any alternatives you considered (free tier, per-client pricing, annual plans).\n- TODO: what surprised you about how people reacted to the price.\n\n## 3. Getting the first users\n- TODO: where they came from, what worked and what didn't.\n\n## 4. Running it day to day\n- TODO: support, bugs, hosting costs, the boring parts nobody mentions.\n\n## 5. What I'd do differently\n- TODO: 2–3 honest lessons.\n\n## What this means for client projects\n- TODO: how running your own product makes you better at building other people's: you think about cost, scope and what users actually do.\n",
+      "coverImage": "",
+      "coverAlt": "",
+      "publishedAt": "2026-11-11",
+      "updatedAt": "2026-11-11T00:00:00.000Z",
+      "published": false
+    },
+    {
+      "id": "pt2c-technical-deep-dive",
+      "slug": "how-pt2c-works-technical-deep-dive",
+      "title": "TODO: How PT2C handles [a specific technical problem]",
+      "excerpt": "TODO: a one-line summary of the technical problem and your solution.",
+      "seoDescription": "",
+      "tags": [
+        "PT2C",
+        "engineering"
+      ],
+      "body": "> **Outline: pick ONE interesting part of PT2C and go deep.** This is the post most likely to earn links from other developers, so be specific: real code, real trade-offs.\n>\n> Ideas: how subscriptions and billing work, how workout plans are modelled in the database, offline support, notifications, multi-tenant data separation, how you keep hosting costs low.\n\n## The problem\n- TODO: what needed solving, and why the obvious approach didn't work.\n\n## The constraints\n- TODO: cost, performance, a solo developer's time, the stack you're on.\n\n## The approach\n- TODO: architecture diagram or short explanation.\n- TODO: key code snippets (trimmed to the interesting parts).\n\n```ts\n// TODO: the most interesting 10–20 lines\n```\n\n## Trade-offs and what I'd change\n- TODO: what you gave up, and what you'd do with more time.\n\n## Takeaways\n- TODO: 3 bullet points another developer could apply to their own project.\n",
+      "coverImage": "",
+      "coverAlt": "",
+      "publishedAt": "2026-11-11",
+      "updatedAt": "2026-11-11T00:00:00.000Z",
+      "published": false
     }
-  ]
+  ],
+  "services": {
+    "packages": [
+      {
+        "id": "website",
+        "name": "Website / Landing page",
+        "priceFrom": "TODO",
+        "billing": "from",
+        "timeline": "TODO",
+        "summary": "A fast, professional site that explains what you do and turns visitors into enquiries.",
+        "includes": [
+          "Design tailored to your brand",
+          "Responsive build that works on every screen",
+          "SEO setup: titles, descriptions, sitemap, Google Search Console",
+          "Content you can edit yourself",
+          "Launch: domain, hosting and analytics set up"
+        ],
+        "proofProjectSlug": "bookgusto",
+        "badge": "",
+        "ctaText": "Start a website",
+        "ctaHref": "/contact?package=website",
+        "service": "websites"
+      },
+      {
+        "id": "web-app-mvp",
+        "name": "Web App MVP",
+        "priceFrom": "TODO",
+        "billing": "from",
+        "timeline": "TODO",
+        "summary": "The smallest version of your product that real users can sign up to, use and pay for.",
+        "includes": [
+          "Scoping: we agree what's in version one, and what isn't",
+          "Core features built and tested",
+          "User accounts and secure login",
+          "Payments and subscriptions",
+          "Deployment to production, with the code handed over to you"
+        ],
+        "proofProjectSlug": "pt2c",
+        "badge": "Most popular",
+        "ctaText": "Plan your MVP",
+        "ctaHref": "/contact?package=web-app-mvp",
+        "service": "web-apps"
+      },
+      {
+        "id": "care-plan",
+        "name": "Care Plan",
+        "priceFrom": "TODO",
+        "billing": "monthly",
+        "timeline": "Ongoing, cancel any time",
+        "summary": "Keep your site or app secure, up to date and improving after launch, without hiring anyone.",
+        "includes": [
+          "Hosting and monitoring",
+          "Security and dependency updates",
+          "Bug fixes",
+          "Small changes each month (TODO: how many hours)"
+        ],
+        "proofProjectSlug": "",
+        "badge": "Add to any project",
+        "ctaText": "Add a care plan",
+        "ctaHref": "/contact?package=care-plan",
+        "service": ""
+      }
+    ],
+    "faq": [
+      {
+        "q": "How long does a project take?",
+        "a": "It depends on scope. As a rough guide, a website or landing page takes TODO weeks and a web app MVP takes TODO weeks. You'll get a timeline in writing with your quote, before anything starts."
+      },
+      {
+        "q": "Who owns the code?",
+        "a": "You do. Once the final invoice is paid, the code, design files and accounts (domain, hosting, payments) are yours. Nothing is locked to me, so you're free to work with another developer later."
+      },
+      {
+        "q": "What happens after launch?",
+        "a": "I fix any bugs that come from my work for TODO days after launch at no cost. After that you can book changes as and when you need them, or join a Care Plan for hosting, updates, fixes and small changes each month."
+      },
+      {
+        "q": "How does payment work?",
+        "a": "TODO: confirm your terms. For example: a deposit to book the work, a payment at an agreed milestone, and the balance on launch. Care Plans are billed monthly and can be cancelled any time."
+      }
+    ],
+    "process": [
+      {
+        "title": "Discovery call",
+        "body": "A free call to understand your business and what you need.",
+        "duration": "30 min"
+      },
+      {
+        "title": "Scope & quote",
+        "body": "A written scope, timeline and fixed price.",
+        "duration": ""
+      },
+      {
+        "title": "Build",
+        "body": "Regular check-ins with working progress you can try.",
+        "duration": ""
+      },
+      {
+        "title": "Launch",
+        "body": "Deployed, tested and handed over: the code is yours.",
+        "duration": ""
+      },
+      {
+        "title": "Support",
+        "body": "Fixes and improvements, or an ongoing Care Plan.",
+        "duration": ""
+      }
+    ],
+    "services": [
+      {
+        "slug": "web-apps",
+        "title": "Web app development",
+        "summary": "Custom web and mobile apps for small businesses and startups in Glasgow, Perth and across Scotland, built with you from the first idea through to launch.",
+        "intro": "TODO: who this is for and the problems you solve with a custom web app.",
+        "bullets": [
+          "TODO: benefit",
+          "TODO: benefit",
+          "TODO: benefit"
+        ],
+        "proofProjectSlug": "pt2c"
+      },
+      {
+        "slug": "websites",
+        "title": "Business websites",
+        "summary": "Fast, responsive business websites and landing pages for companies in Glasgow, Perth and across Scotland, with content you can edit yourself.",
+        "intro": "TODO: who this is for and what a good website does for their business.",
+        "bullets": [
+          "TODO: benefit",
+          "TODO: benefit",
+          "TODO: benefit"
+        ],
+        "proofProjectSlug": "bookgusto"
+      }
+    ]
+  }
 }
