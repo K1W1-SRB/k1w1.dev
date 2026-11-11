@@ -1,5 +1,5 @@
 import Hero from "@/sections/hero";
-import FeaturedWork from "@/sections/FeaturedWork";
+import ProjectCard from "@/components/ProjectCard";
 import Packages from "@/sections/Packages";
 import CtaBand from "@/sections/CtaBand";
 import Section from "@/components/layout/Section";
@@ -29,10 +29,19 @@ function structuredData() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        // Google uses WebSite name/alternateName for the site name shown in results.
+        "@type": "WebSite",
+        "@id": `${SITE.url}/#website`,
+        name: SITE.brand,
+        alternateName: [...SITE.alternateNames],
+        url: SITE.url,
+        publisher: { "@id": `${SITE.url}/#business` },
+      },
+      {
         "@type": "Person",
         "@id": `${SITE.url}/#person`,
         name: SITE.name,
-        jobTitle: "Freelance Web App Developer",
+        jobTitle: "Freelance Software Developer",
         url: SITE.url,
         worksFor: { "@id": `${SITE.url}/#business` },
         address,
@@ -43,7 +52,9 @@ function structuredData() {
         "@type": "ProfessionalService",
         "@id": `${SITE.url}/#business`,
         name: SITE.brand,
+        alternateName: [...SITE.alternateNames],
         description: SITE.description,
+        serviceType: ["Software development", "Web app development", "Website development", "Mobile app development"],
         url: SITE.url,
         image: `${SITE.url}/opengraph-image`,
         founder: { "@id": `${SITE.url}/#person` },
@@ -67,7 +78,18 @@ export default async function Home() {
       <Hero />
 
       <Section id="work" eyebrow="Selected work" title="Things I've built">
-        <FeaturedWork projects={projects} />
+        {projects[0] && (
+          <div className="flex flex-col gap-6">
+            <ProjectCard project={projects[0]} wide priority headingLevel={3} />
+            {projects.length > 1 && (
+              <div className="grid gap-6 md:grid-cols-2">
+                {projects.slice(1, 3).map((p) => (
+                  <ProjectCard key={p.id} project={p} headingLevel={3} />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
         <Link href="/work" className="read-more mt-10 inline-block">
           See all work →
         </Link>

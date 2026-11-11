@@ -4,9 +4,11 @@ export const SITE = {
   url: "https://k1w1.dev",
   name: "Sebastian",
   brand: "K1W1",
-  title: "Sebastian at K1W1 – Freelance Web App Developer | Glasgow & Perth",
+  // How the brand is said. Used in JSON-LD alternateName and visible copy so searches for "kiwi" can match.
+  alternateNames: ["Kiwi", "Kiwi Dev"],
+  title: "Freelance Software Developer, Glasgow & Perth | K1W1",
   description:
-    "Freelance web app developer in Glasgow & Perth, Scotland. I build custom web and mobile apps with Next.js, React Native and Node.js for small businesses.",
+    "Freelance software developer in Glasgow & Perth, Scotland. I build custom web apps, websites and mobile apps for small businesses with Next.js and Node.js.",
   // Stored split so the full address never appears in the HTML or as a plain string scrapers can match.
   // It's assembled client-side by <ProtectedEmail />.
   emailParts: ["softwaredeveloper.k1w1", "gmail.com"],

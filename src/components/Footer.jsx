@@ -26,7 +26,7 @@ function Footer() {
             <Link href="/" className="text-xl font-semibold text-white">
               {SITE.brand}
             </Link>
-            <p className="mt-3 max-w-xs text-sm">Freelance web app developer building websites, web apps and mobile apps.</p>
+            <p className="mt-3 max-w-xs text-sm">Freelance software developer building websites, web apps and mobile apps.</p>
             <p className="mt-3 flex items-center gap-2 text-sm">
               <FiMapPin aria-hidden="true" />
               {locationLabel}

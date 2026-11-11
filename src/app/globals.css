@@ -82,7 +82,7 @@ body {
   }
 
   .hero-layout {
-    @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
+    @apply relative z-10 xl:mt-10 mt-28 md:h-[80dvh] h-[80vh] flex xl:items-center items-start justify-center;
   }
 
   .hero-text {
@@ -104,7 +104,7 @@ body {
   }
 
   .navbar {
-    @apply fixed w-full left-1/2 py-5 px-5 md:px-20 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
+    @apply fixed w-full left-1/2 py-5 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
 
     &.scrolled {
       @apply top-0 bg-[#212121];
@@ -114,8 +114,8 @@ body {
       @apply md:top-10 top-0 bg-transparent;
     }
 
-    .inner {
-      @apply mx-auto flex items-center justify-between;
+    > .inner {
+      @apply mx-auto flex w-full max-w-6xl items-center justify-between px-5 md:px-10;
     }
 
     .logo {
@@ -167,58 +167,6 @@ body {
         span {
           @apply group-hover:text-white transition-colors duration-300;
         }
-      }
-    }
-  }
-
-  .app-showcase {
-    @apply w-full;
-
-    .showcaselayout {
-      @apply flex xl:flex-row flex-col gap-10 justify-between;
-    }
-
-    .first-project-wrapper {
-      @apply h-full flex flex-col justify-between xl:w-[60%];
-
-      .image-wrapper {
-        @apply xl:h-[70vh] md:h-[50vh] h-96 relative;
-
-        img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0;
-        }
-      }
-
-      .text-content {
-        @apply space-y-5 mt-5;
-
-        .badges {
-          @apply flex gap-2 mb-4;
-        }
-
-        h3 {
-          @apply text-2xl md:text-3xl lg:text-4xl font-bold;
-        }
-      }
-    }
-
-    .project-list-wrapper {
-      @apply flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%];
-
-      .image-wrapper {
-        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0;
-      }
-
-      img {
-        @apply w-full h-full object-contain rounded-xl;
-      }
-
-      h3 {
-        @apply text-lg md:text-xl lg:text-2xl font-semibold mt-3;
-      }
-
-      p {
-        @apply text-white-50 text-sm mt-2 line-clamp-2;
       }
     }
   }
@@ -462,26 +410,27 @@ body {
 }
 
 @keyframes wordSlider {
-  0% {
-    transform: translateY(0.5%);
+  /* 7 words: each step moves exactly one word (100% / 7). */
+  0.0% {
+    transform: translateY(0);
   }
   12.5% {
-    transform: translateY(-14%);
+    transform: translateY(-14.2857%);
   }
-  25% {
-    transform: translateY(-28%);
+  25.0% {
+    transform: translateY(-28.5714%);
   }
   37.5% {
-    transform: translateY(-42%);
+    transform: translateY(-42.8571%);
   }
-  50% {
-    transform: translateY(-58%);
+  50.0% {
+    transform: translateY(-57.1429%);
   }
   62.5% {
-    transform: translateY(-70%);
+    transform: translateY(-71.4286%);
   }
-  75% {
-    transform: translateY(-86%);
+  75.0% {
+    transform: translateY(-85.7143%);
   }
 }
 

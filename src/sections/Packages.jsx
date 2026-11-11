@@ -28,8 +28,8 @@ function Packages({ packages, projects = [], compact = false }) {
             id={`package-${pkg.id}`}
             className={`card-border rounded-xl p-8 flex flex-col gap-4 ${highlighted ? "ring-1 ring-accent" : ""}`}
           >
-            {/* Badge row is always reserved so names and prices line up across cards. */}
-            <div className="h-6">
+            {/* Badge row is reserved side by side so names and prices line up; stacked on mobile it isn't needed. */}
+            <div className={pkg.badge ? "h-6" : "hidden h-6 md:block"}>
               {pkg.badge && (
                 <span className={`badge inline-block ${highlighted ? "!border-accent !text-accent" : ""}`}>{pkg.badge}</span>
               )}

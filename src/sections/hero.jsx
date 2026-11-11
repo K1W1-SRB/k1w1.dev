@@ -17,7 +17,7 @@ function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="hero-layout">
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
+        <header className="mx-auto flex w-full max-w-6xl flex-col justify-center px-5 md:px-10">
           <div className="flex flex-col gap-7">
             <div className="hero-text">
               <h1>
@@ -43,7 +43,7 @@ function Hero() {
               <h2>That just work</h2>
             </div>
             <p className="text-white md:text-xl relative z-10 pointer-events-none">
-              Digital craftsmanship for real-world software
+              Freelance software developer in Glasgow &amp; Perth, Scotland
             </p>
             <Button
               text="See My Work"

@@ -94,8 +94,8 @@ export default async function ServicePage({ params }: Params) {
       >
         {svc.bullets.length > 0 && (
           <ul className="mt-8 flex flex-col gap-3">
-            {svc.bullets.map((b) => (
-              <li key={b} className="flex gap-3 text-white-50 md:text-lg">
+            {svc.bullets.map((b, i) => (
+              <li key={`${i}-${b}`} className="flex gap-3 text-white-50 md:text-lg">
                 <span aria-hidden="true" className="text-green-400">
                   ✓
                 </span>
@@ -107,8 +107,10 @@ export default async function ServicePage({ params }: Params) {
       </PageIntro>
 
       {svc.intro && (
-        <Section id="overview" narrow className="!pt-6">
-          <Markdown>{svc.intro}</Markdown>
+        <Section id="overview" className="!pt-6">
+          <div className="max-w-3xl">
+            <Markdown>{svc.intro}</Markdown>
+          </div>
         </Section>
       )}
 

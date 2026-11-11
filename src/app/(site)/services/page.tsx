@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { SITE } from "@/constants/site";
 
 export const metadata = pageMetadata({
-  title: "Services & Packages – Web Apps and Websites",
+  title: "Software Development Services in Glasgow & Perth",
   description:
     "Fixed-price packages for custom web apps and business websites in Glasgow, Perth and across Scotland. See what's included, how I work, and common questions.",
   path: "/services",

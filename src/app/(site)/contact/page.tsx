@@ -8,7 +8,7 @@ import { getServices } from "@/lib/content-store";
 import { SITE, locationLabel } from "@/constants/site";
 
 export const metadata = pageMetadata({
-  title: "Contact – Start Your Project",
+  title: "Contact a Freelance Developer in Scotland",
   description: `Get in touch about a web app or website project. Based in ${locationLabel}. Typical reply: ${SITE.replyTime.toLowerCase()}.`,
   path: "/contact",
 });
