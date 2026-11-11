@@ -15,6 +15,8 @@ export type Project = {
 export type ExpCard = {
   id: string;
   review: string;
+  /** Who the testimonial is from, e.g. "Jane Doe, PT2C user". The quote only shows when this is set. */
+  reviewer?: string;
   imgPath: string;
   logoPath: string;
   title: string;

@@ -60,6 +60,7 @@ export async function saveExpCard(formData: FormData) {
   const card: ExpCard = {
     id,
     review: str(formData, "review"),
+    reviewer: str(formData, "reviewer"),
     imgPath: str(formData, "imgPath"),
     logoPath: str(formData, "logoPath"),
     title: str(formData, "title"),

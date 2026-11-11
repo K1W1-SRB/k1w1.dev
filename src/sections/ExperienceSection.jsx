@@ -106,7 +106,7 @@ const ExperienceSection = ({ expCards }) => {
                 <div className="xl:w-2/6">
                   <GlowCard card={card}>
                     <div>
-                      <img src={card.imgPath} alt="exp-img" />
+                      <img src={card.imgPath} alt={`${card.title} – project screenshot`} />
                     </div>
                   </GlowCard>
                 </div>
@@ -118,10 +118,10 @@ const ExperienceSection = ({ expCards }) => {
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
-                        <img className="w-1/2 h-1/2 aspect-square" src={card.logoPath} alt="logo" />
+                        <img className="w-1/2 h-1/2 aspect-square" src={card.logoPath} alt={`${card.title} logo`} />
                       </div>
                       <div>
-                        <h1 className="font-semibold text-3xl">{card.title}</h1>
+                        <h3 className="font-semibold text-3xl">{card.title}</h3>
                         <p className="my-5 text-white-50">
                           🗓️&nbsp;{card.date}
                         </p>

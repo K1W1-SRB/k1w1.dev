@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/models/contact/ContactExperience";
+import { SITE } from "../constants/site";
+import ProtectedEmail from "../components/ProtectedEmail";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -54,6 +56,19 @@ const Contact = () => {
                 onSubmit={handleSubmit}
                 className="w-full flex flex-col gap-7"
               >
+                <div className="flex flex-col gap-2">
+                  <p className="flex items-center gap-3 text-white font-medium">
+                    <span className="relative flex size-3" aria-hidden="true">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
+                      <span className="relative inline-flex size-3 rounded-full bg-green-500" />
+                    </span>
+                    {SITE.availability}
+                  </p>
+                  <p className="text-white-50">
+                    Typical reply: <span className="text-white">{SITE.replyTime}</span>
+                  </p>
+                </div>
+
                 <div>
                   <label htmlFor="name">Your name</label>
                   <input
@@ -93,6 +108,11 @@ const Contact = () => {
                   />
                 </div>
 
+                <p className="text-white-50">
+                  Prefer email?{" "}
+                  <ProtectedEmail className="text-white underline hover:text-white-50" />
+                </p>
+
                 <button type="submit">
                   <div className="cta-button group">
                     <div className="bg-circle" />
@@ -100,7 +120,7 @@ const Contact = () => {
                       {loading ? "Sending..." : "Send Message"}
                     </p>
                     <div className="arrow-wrapper">
-                      <img src="/images/arrow-down.svg" alt="arrow" />
+                      <img src="/images/arrow-down.svg" alt="" />
                     </div>
                   </div>
                 </button>

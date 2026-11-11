@@ -7,6 +7,7 @@ import type { ExpCard } from "@/lib/content-store";
 const BLANK: ExpCard = {
   id: "",
   review: "",
+  reviewer: "",
   imgPath: "",
   logoPath: "",
   title: "",
@@ -54,11 +55,23 @@ export default async function EditExpCardPage({ params }: { params: Promise<{ id
         </div>
 
         <div>
-          <label className="mb-2 block text-sm text-white-50">Review / testimonial</label>
+          <label className="mb-2 block text-sm text-white-50">
+            Testimonial (real client quotes only, shown only when a reviewer is set)
+          </label>
           <textarea
             name="review"
             defaultValue={card.review}
             rows={3}
+            className="w-full rounded-md border border-blue-100 bg-blue-100 px-4 py-2 text-white outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm text-white-50">Testimonial from</label>
+          <input
+            name="reviewer"
+            defaultValue={card.reviewer ?? ""}
+            placeholder="Jane Doe, PT2C user"
             className="w-full rounded-md border border-blue-100 bg-blue-100 px-4 py-2 text-white outline-none"
           />
         </div>

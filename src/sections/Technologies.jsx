@@ -12,7 +12,9 @@ import {
   SiNestjs,
   SiNodedotjs,
 } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
+// TODO: add the technologies PT2C is built with.
 const technologies = [
   {
     name: "Figma",
@@ -31,6 +33,12 @@ const technologies = [
     desc: "JavaScript Library",
     icon: SiReact,
     glow: "bg-cyan-400",
+  },
+  {
+    name: "React Native",
+    desc: "Mobile apps (used for FretVault)",
+    icon: TbBrandReactNative,
+    glow: "bg-sky-500",
   },
   {
     name: "NextJS",

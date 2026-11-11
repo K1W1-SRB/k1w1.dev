@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import path from "path";
 
 const UPLOADS_DIR = process.env.UPLOADS_DIR ?? path.join(process.cwd(), "uploads");
-const FILENAME_PATTERN = /^[a-f0-9-]+\.(png|jpg|webp)$/;
+const FILENAME_PATTERN = /^[a-z0-9-]+\.(png|jpg|webp)$/;
 
 const CONTENT_TYPES: Record<string, string> = {
   png: "image/png",

@@ -47,7 +47,7 @@ function ShowcaseSection({ projects }) {
           {/*LEFT SIDE*/}
           <div className="first-project-wrapper" ref={featuredRef}>
             <div className="image-wrapper">
-              <img src={featuredProject.image} alt={featuredProject.title} />
+              <img src={featuredProject.image} alt={`Screenshot of ${featuredProject.title}`} />
             </div>
             <div className="text-content">
               <div className="badges">
@@ -80,7 +80,7 @@ function ShowcaseSection({ projects }) {
                 ref={(el) => listRefs.current.push(el)}
               >
                 <div className="">
-                  <img src={project.image} alt={project.title} />
+                  <img src={project.image} alt={`Screenshot of ${project.title}`} />
                 </div>
                 <div className="badges">
                   <span className="text-xs px-3 py-1 rounded-full border border-white-50/30 text-white-50">

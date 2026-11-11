@@ -3,14 +3,13 @@ import React from "react";
 import { words } from "@/constants";
 import Button from "@/components/Button";
 import HeroExperience from "@/components/heromodel/HeroExperience";
-import AnimatedCounter from "@/components/AnimatedCounter";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 function Hero() {
   useGSAP(() => {
     gsap.fromTo(
-      ".hero-text h1",
+      ".hero-text h1, .hero-text h2",
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, stagger: 0.5, ease: "power2.inOut" }
     );
@@ -32,7 +31,7 @@ function Hero() {
                       >
                         <img
                           src={word.icon}
-                          alt={word.text}
+                          alt=""
                           className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white"
                         />
                         <span>{word.text}</span>
@@ -41,7 +40,7 @@ function Hero() {
                   </span>
                 </span>
               </h1>
-              <h1>That just work</h1>
+              <h2>That just work</h2>
             </div>
             <p className="text-white md:text-xl relative z-10 pointer-events-none">
               Digital craftsmanship for real-world software
@@ -49,7 +48,7 @@ function Hero() {
             <Button
               text="See My Work"
               className="md:w-80 md:h-16 w-60 h-12"
-              id="counter"
+              id="work"
             />
           </div>
         </header>
@@ -60,8 +59,6 @@ function Hero() {
           </div>
         </figure>
       </div>
-
-      <AnimatedCounter />
     </section>
   );
 }
