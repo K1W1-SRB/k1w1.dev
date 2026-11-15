@@ -14,7 +14,7 @@ export default async function AdminProjectsPage() {
         </Link>
       </div>
       <p className="mb-4 text-sm text-white-50">
-        First item is the featured project on the homepage. Use the arrows to reorder.
+        Projects marked Featured lead on the homepage and /work; the rest follow in this order. Use the arrows to reorder.
       </p>
       <div className="flex flex-col gap-3">
         {projects.map((project, index) => (
@@ -22,12 +22,19 @@ export default async function AdminProjectsPage() {
             key={project.id}
             className="flex items-center gap-4 rounded-lg border border-black-50 bg-black-200 p-4"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={project.image} alt="" className="h-16 w-24 rounded-md object-cover" />
+            {project.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={project.image} alt="" className="h-16 w-24 rounded-md object-cover" />
+            ) : (
+              <div className="h-16 w-24 rounded-md bg-black-50" />
+            )}
             <div className="flex-1">
               <p className="font-medium">{project.title}</p>
               <p className="text-sm text-white-50">
-                {project.status} {!project.published && "· Draft"}
+                /work/{project.slug} · {project.status}
+                {project.featured && " · Featured"}
+                {!project.caseStudy && " · No case study"}
+                {!project.published && " · Draft"}
               </p>
             </div>
             <div className="flex items-center gap-2">

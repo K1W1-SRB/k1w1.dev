@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SITE } from "@/constants/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "K1W1 Software Development",
-  description: "For all your software needs",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: SITE.title,
+    template: `%s | ${SITE.brand}`,
+  },
+  description: SITE.description,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: "/",
+    siteName: SITE.brand,
+    title: SITE.title,
+    description: SITE.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.title,
+    description: SITE.description,
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

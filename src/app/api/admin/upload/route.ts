@@ -6,6 +6,19 @@ import path from "path";
 const UPLOADS_DIR = process.env.UPLOADS_DIR ?? path.join(process.cwd(), "uploads");
 const MAX_SIZE_BYTES = 5 * 1024 * 1024;
 
+/** "PT2C Workout_Plan View.PNG" -> "pt2c-workout-plan-view" (descriptive, SEO-friendly filenames). */
+function slugify(name: string): string {
+  return name
+    .replace(/\.[^.]+$/, "")
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60)
+    .replace(/-+$/g, "");
+}
+
 const ALLOWED_TYPES: Record<string, { ext: string; magic: (buf: Buffer) => boolean }> = {
   "image/png": {
     ext: "png",
@@ -47,7 +60,8 @@ export async function POST(request: Request) {
   }
 
   await mkdir(UPLOADS_DIR, { recursive: true });
-  const filename = `${randomUUID()}.${typeInfo.ext}`;
+  const slug = slugify(file.name) || "image";
+  const filename = `${slug}-${randomUUID().slice(0, 8)}.${typeInfo.ext}`;
   await writeFile(path.join(UPLOADS_DIR, filename), buffer);
 
   return NextResponse.json({ path: `/uploads/${filename}` });

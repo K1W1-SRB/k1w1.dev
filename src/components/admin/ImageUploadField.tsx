@@ -6,10 +6,13 @@ export default function ImageUploadField({
   name,
   label,
   defaultValue,
+  onChange,
 }: {
-  name: string;
+  name?: string;
   label: string;
   defaultValue: string;
+  /** Called with the new path after an upload or removal (used inside RepeaterField rows). */
+  onChange?: (value: string) => void;
 }) {
   const [value, setValue] = useState(defaultValue);
   const [uploading, setUploading] = useState(false);
@@ -30,6 +33,7 @@ export default function ImageUploadField({
 
     if (res.ok) {
       setValue(data.path);
+      onChange?.(data.path);
     } else {
       setError(data.error ?? "Upload failed");
     }
@@ -39,10 +43,22 @@ export default function ImageUploadField({
   return (
     <div className="mb-4">
       <label className="mb-2 block text-sm text-white-50">{label}</label>
-      <input type="hidden" name={name} value={value} />
+      {name && <input type="hidden" name={name} value={value} />}
       {value && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={value} alt="" className="mb-2 h-24 rounded-md border border-black-50 object-cover" />
+      )}
+      {value && (
+        <button
+          type="button"
+          onClick={() => {
+            setValue("");
+            onChange?.("");
+          }}
+          className="mb-2 block text-xs text-red-400 hover:text-red-300"
+        >
+          Remove image
+        </button>
       )}
       <input
         type="file"

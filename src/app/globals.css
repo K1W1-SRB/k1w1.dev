@@ -19,10 +19,6 @@ body {
   overflow-x: hidden;
 }
 
-section {
-  width: 100dvw;
-}
-
 @theme {
   --font-sans: "Mona Sans", sans-serif;
   --color-white-50: #d9ecff;
@@ -31,6 +27,7 @@ section {
   --color-black-200: #282732;
   --color-blue-50: #839cb5;
   --color-blue-100: #2d2d38;
+  --color-accent: #39a835;
 }
 
 @layer utilities {
@@ -85,7 +82,7 @@ section {
   }
 
   .hero-layout {
-    @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
+    @apply relative z-10 xl:mt-10 mt-28 md:h-[80dvh] h-[80vh] flex xl:items-center items-start justify-center;
   }
 
   .hero-text {
@@ -107,7 +104,7 @@ section {
   }
 
   .navbar {
-    @apply fixed w-full left-1/2 py-5 px-5 md:px-20 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
+    @apply fixed w-full left-1/2 py-5 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
 
     &.scrolled {
       @apply top-0 bg-[#212121];
@@ -117,8 +114,8 @@ section {
       @apply md:top-10 top-0 bg-transparent;
     }
 
-    .inner {
-      @apply mx-auto flex items-center justify-between;
+    > .inner {
+      @apply mx-auto flex w-full max-w-6xl items-center justify-between px-5 md:px-10;
     }
 
     .logo {
@@ -145,6 +142,22 @@ section {
       }
     }
 
+    .mobile-menu-btn {
+      @apply lg:hidden p-2 rounded-lg hover:bg-black-50 transition-colors;
+    }
+
+    .mobile-nav {
+      @apply lg:hidden mt-4 border-t border-black-50 pt-4;
+
+      ul {
+        @apply flex flex-col gap-1;
+      }
+
+      a {
+        @apply block py-3 text-lg;
+      }
+    }
+
     .contact-btn {
       @apply flex;
 
@@ -158,55 +171,116 @@ section {
     }
   }
 
-  .app-showcase {
-    @apply w-full mt-20 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;
+  /* ---------- Multi-page layout ---------- */
 
-    .showcaselayout {
-      @apply flex xl:flex-row flex-col gap-10 justify-between;
+  .eyebrow {
+    @apply mb-3 text-sm font-medium uppercase tracking-widest text-accent;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-semibold tracking-tight;
+  }
+
+  .badge {
+    @apply text-xs px-3 py-1 rounded-full border border-white-50/30 text-white-50;
+  }
+
+  .read-more {
+    @apply text-white underline underline-offset-4 decoration-white-50/40 hover:decoration-white transition-colors;
+  }
+
+  .cta-band {
+    @apply border border-black-50 bg-[#1b1b1b] rounded-2xl p-8 md:p-12 flex flex-col lg:flex-row lg:items-center justify-between gap-8;
+  }
+
+  .faq-item {
+    @apply border border-black-50 bg-[#1b1b1b] rounded-xl p-6;
+
+    summary {
+      @apply flex items-center justify-between gap-5 cursor-pointer list-none text-lg font-medium;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      span {
+        @apply text-2xl text-white-50;
+      }
+    }
+  }
+
+  .process-steps {
+    @apply grid grid-cols-1 gap-8 relative;
+
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(var(--steps, 5), minmax(0, 1fr));
+      gap: 1.5rem;
+
+      /* Thin line linking the step numbers. */
+      &::before {
+        content: "";
+        @apply absolute top-5 left-[10%] right-[10%] h-px bg-black-50;
+      }
     }
 
-    .first-project-wrapper {
-      @apply h-full flex flex-col justify-between xl:w-[60%];
+    li {
+      @apply relative flex flex-col max-lg:ps-16;
+    }
 
-      .image-wrapper {
-        @apply xl:h-[70vh] md:h-[50vh] h-96 relative;
+    .step-number {
+      @apply size-10 rounded-full border border-black-50 bg-black-100 flex items-center justify-center font-semibold relative z-10 max-lg:absolute max-lg:left-0 max-lg:top-0;
+    }
+  }
 
-        img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0;
-        }
-      }
+  .prose-k1w1 {
+    @apply text-white-50 leading-relaxed text-base md:text-lg;
 
-      .text-content {
-        @apply space-y-5 mt-5;
+    > * + * {
+      @apply mt-5;
+    }
 
-        .badges {
-          @apply flex gap-2 mb-4;
-        }
+    h2 {
+      @apply text-2xl md:text-3xl font-semibold text-white mt-10;
+    }
 
-        h2 {
-          @apply text-2xl md:text-3xl lg:text-4xl font-bold;
-        }
+    h3 {
+      @apply text-xl font-semibold text-white mt-8;
+    }
+
+    a {
+      @apply text-white underline underline-offset-4;
+    }
+
+    strong {
+      @apply text-white;
+    }
+
+    ul {
+      @apply list-disc ps-6 flex flex-col gap-2;
+    }
+
+    ol {
+      @apply list-decimal ps-6 flex flex-col gap-2;
+    }
+
+    blockquote {
+      @apply border-s-2 border-accent ps-5 italic;
+    }
+
+    code {
+      @apply bg-black-200 rounded px-1.5 py-0.5 text-sm text-white;
+    }
+
+    pre {
+      @apply bg-black-100 border border-black-50 rounded-lg p-5 overflow-x-auto;
+
+      code {
+        @apply bg-transparent p-0;
       }
     }
 
-    .project-list-wrapper {
-      @apply flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%];
-
-      .image-wrapper {
-        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0;
-      }
-
-      img {
-        @apply w-full h-full object-contain rounded-xl;
-      }
-
-      h2 {
-        @apply text-lg md:text-xl lg:text-2xl font-semibold mt-5;
-      }
-
-      p {
-        @apply text-white-50 text-sm mt-2 line-clamp-2;
-      }
+    img {
+      @apply rounded-xl border border-black-50;
     }
   }
 
@@ -295,14 +369,6 @@ section {
     textarea {
       @apply w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md;
     }
-
-    a {
-      @apply w-full py-4 bg-white text-black font-semibold rounded-md flex justify-center items-center gap-2;
-
-      img {
-        @apply inline-block;
-      }
-    }
   }
 
   .footer {
@@ -344,26 +410,27 @@ section {
 }
 
 @keyframes wordSlider {
-  0% {
-    transform: translateY(0.5%);
+  /* 7 words: each step moves exactly one word (100% / 7). */
+  0.0% {
+    transform: translateY(0);
   }
   12.5% {
-    transform: translateY(-14%);
+    transform: translateY(-14.2857%);
   }
-  25% {
-    transform: translateY(-28%);
+  25.0% {
+    transform: translateY(-28.5714%);
   }
   37.5% {
-    transform: translateY(-42%);
+    transform: translateY(-42.8571%);
   }
-  50% {
-    transform: translateY(-58%);
+  50.0% {
+    transform: translateY(-57.1429%);
   }
   62.5% {
-    transform: translateY(-70%);
+    transform: translateY(-71.4286%);
   }
-  75% {
-    transform: translateY(-86%);
+  75.0% {
+    transform: translateY(-85.7143%);
   }
 }
 
