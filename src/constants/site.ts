@@ -17,7 +17,7 @@ export const SITE = {
   country: "GB",
   github: "https://github.com/K1W1-SRB",
   linkedin: "", // TODO: add LinkedIn profile URL
-  pt2cUrl: "", // TODO: add PT2C URL
+  pt2cUrl: "https://pt2c.com",
   availability: "Available for new projects", // TODO: update as your availability changes
   replyTime: "Within 24 hours on weekdays",
 } as const;

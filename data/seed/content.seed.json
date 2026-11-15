@@ -4,103 +4,221 @@
       "id": "pt2c",
       "slug": "pt2c",
       "title": "PT2C",
-      "summary": "TODO: one line on what PT2C is and who it's for.",
-      "image": "",
-      "imageAlt": "",
+      "summary": "Client management for solo personal trainers: programmes, weekly check-ins and progress tracking, plus a password-free client portal.",
+      "image": "/images/pt2c-cover.png",
+      "imageAlt": "PT2C programme builder on desktop alongside the client portal on mobile",
       "status": "Live",
       "role": "Founder & full-stack developer",
-      "year": "TODO",
-      "liveUrl": "",
+      "year": "2025",
+      "liveUrl": "https://pt2c.com",
       "featured": true,
       "published": false,
       "seoTitle": "",
       "seoDescription": "",
       "caseStudy": {
-        "problem": "TODO: who PT2C is for, and what was wrong with the existing options (price, complexity, what they forced on people).",
+        "problem": "Solo personal trainers with 5–20 online clients are stuck in the middle. The big platforms like Trainerize and PT Distinction are built with gyms in mind, cost £30–80 a month, and take real effort to set up. So most independent PTs fall back on what's free: programmes sent as PDFs or screenshots over WhatsApp, progress tracked in Google Sheets, and check-ins buried in chat threads.\n\nIt works until it doesn't. There's no single place to see who's on track, who's gone quiet, or what plan each client is actually on, and it doesn't look very professional to the people paying for coaching. I wanted to build something simple and affordable that a solo PT could set up in an evening.",
         "features": [
           {
-            "title": "TODO: key feature",
-            "body": "TODO: what it does and why it matters to the user.",
+            "title": "PT dashboard",
+            "body": "A home screen that answers one question: who needs my attention today? It shows active clients, pending check-ins and key numbers at a glance, so a PT can spend less time on admin and more on coaching.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "PT2C dashboard showing client list and metric cards"
+          },
+          {
+            "title": "Client management and invites",
+            "body": "PTs add a client with their goal, start date and private notes, then send an invite by email. Clients can be archived instead of deleted, so their history stays intact if they come back.",
+            "image": "",
+            "imageAlt": "Client list with status badges and an add client form"
+          },
+          {
+            "title": "Week-by-week programme builder",
+            "body": "Programmes are built from structured data (sets, reps, weight, rest and coaching notes) instead of free text. Each session is tied to a week and a day, so PTs can plan progressive overload across a multi-week block instead of rewriting a PDF every Monday.",
+            "image": "",
+            "imageAlt": "Programme builder with exercises laid out by week and day"
+          },
+          {
+            "title": "Passwordless client login",
+            "body": "Clients sign in with a magic link sent to their email. No password to forget, and nothing for the PT to reset on their behalf.",
+            "image": "",
+            "imageAlt": "Magic link sign-in screen on mobile"
+          },
+          {
+            "title": "Check-in notifications",
+            "body": "When a client submits a check-in, the PT gets an in-app notification straight away, so nothing slips through the cracks.",
+            "image": "",
+            "imageAlt": "Notification for a newly submitted client check-in"
+          },
+          {
+            "title": "Subscription billing",
+            "body": "PTs pick a plan (Starter, Growth or Pro) through Stripe Checkout, with a free trial and plan changes handled by Stripe webhooks.",
+            "image": "",
+            "imageAlt": "Pricing tiers and billing settings page"
           }
         ],
         "decisions": [
           {
-            "title": "£12 pricing",
-            "body": "TODO: why £12, what you compared it against, and what that price lets you (and the user) avoid."
+            "title": "Magic links for clients, passwords for PTs",
+            "body": "Clients forget passwords, and when they get locked out it's the PT who hears about it. Magic links remove that problem and come free with Supabase Auth. PTs log in more often and manage paid accounts, so they keep a normal email and password login."
           },
           {
-            "title": "What I deliberately left out",
-            "body": "TODO: the features you chose not to build, and why leaving them out made the product better."
+            "title": "A tight V1 with a written cut list",
+            "body": "I deliberately left out in-app messaging, a native app, session booking, video uploads and team accounts. PTs already use WhatsApp to chat, and a mobile-responsive web app avoids app store fees and review delays. Writing the cuts down kept me from drifting into building a smaller Trainerize."
+          },
+          {
+            "title": "Stripe Billing now, Stripe Connect later",
+            "body": "The original plan was to let PTs take client payments through Stripe Connect. That adds onboarding, compliance and payout complexity before anyone has used the product. I shipped the platform's own subscription billing first and moved Connect to V2."
+          },
+          {
+            "title": "Security and notifications in the database",
+            "body": "Every table uses Postgres row-level security, so a PT can only ever read their own clients, even if there's a bug in the app code. Check-in notifications are created by a Postgres trigger, so they fire whatever submits the check-in and the app doesn't have to remember to do it."
+          },
+          {
+            "title": "Text columns over Postgres enums",
+            "body": "Subscription tier and status started as Postgres enums, but changing an enum means a migration every time pricing changes. I switched to text columns with TypeScript union types, which keeps type safety in the app while keeping the schema easy to change."
+          },
+          {
+            "title": "Separate marketing site and app",
+            "body": "pt2c.com is the marketing site and app.pt2c.com is the authenticated app, handled with subdomain routing in Next.js. That keeps the public pages fast and simple, and keeps auth logic away from them."
           }
         ],
         "stack": [
           {
-            "name": "TODO",
-            "why": "TODO: one sentence on why you chose it."
+            "name": "Next.js (App Router)",
+            "why": "Server components and route handlers in one codebase, plus easy subdomain routing for the site and the app."
+          },
+          {
+            "name": "TypeScript",
+            "why": "Catches schema and data-shape mismatches before they reach users."
+          },
+          {
+            "name": "Tailwind CSS v4",
+            "why": "Design tokens live in one theme file, which keeps a strict two-colour system consistent."
+          },
+          {
+            "name": "Zod + React Hook Form",
+            "why": "One schema validates forms on the client and data on the server."
+          },
+          {
+            "name": "Supabase",
+            "why": "Postgres with row-level security, auth (including magic links) and file storage, without running my own backend."
+          },
+          {
+            "name": "Stripe Billing",
+            "why": "Handles subscriptions, trials and failed payments, so I don't have to build any of it."
+          },
+          {
+            "name": "Resend",
+            "why": "Reliable transactional email for invites and sign-in links."
+          },
+          {
+            "name": "Vercel",
+            "why": "Zero-config deploys and preview builds for every branch."
+          },
+          {
+            "name": "Cloudflare",
+            "why": "DNS for the root domain and app subdomain."
           }
         ],
-        "outcomeTitle": "Outcome",
-        "outcome": "TODO: users, feedback or results so far.",
+        "outcomeTitle": "What I learned",
+        "outcome": "PT2C is live at [pt2c.com](https://pt2c.com) in public beta, and I'm now onboarding the first trainers through PT communities in Glasgow and Edinburgh.\n\nThe biggest lessons so far:\n\n- **Docs drift fast.** My original schema doc fell out of sync with the real database within weeks, and code written against it caused bugs. The live schema is now the source of truth.\n- **Auth edge cases are where the time goes.** Supabase's email invites use an implicit flow that puts the token in the URL fragment, which the server never sees. I had to handle the session on the client first, then finish linking the account on the server to avoid a race condition.\n- **Scoping is a skill.** Shipping a smaller product that works beats a bigger one that's almost finished.\n- **Building is the easy part.** Getting a product in front of the right people takes as much thought as the code does, and it's what I'm focused on now.",
         "testimonial": {
           "quote": "",
           "author": ""
         },
-        "ctaText": "Need a web app like this for your business?",
-        "ctaHref": "/services/web-apps"
+        "ctaText": "Got an idea for a tool your customers would actually use? I build fast, focused web apps from first sketch to live product.",
+        "ctaHref": "/services"
       }
     },
     {
       "id": "bookgusto",
       "slug": "bookgusto",
       "title": "BookGusto",
-      "summary": "A fast, responsive marketing site for a restaurant booking product, with a CMS the team can edit themselves.",
-      "image": "/images/bookgusto-promo.png",
-      "imageAlt": "BookGusto restaurant landing page shown on desktop",
+      "summary": "A fast, SEO-focused marketing site for a restaurant management system, with live pricing from Stripe and content the team edits in Strapi.",
+      "image": "/images/bookgusto-cover.png",
+      "imageAlt": "BookGusto restaurant management marketing site shown on a purple branded cover",
       "status": "Shipped",
       "role": "Frontend developer",
       "year": "2023",
       "liveUrl": "",
       "featured": false,
       "published": true,
-      "seoTitle": "BookGusto – Restaurant Landing Page Case Study",
-      "seoDescription": "How I built a fast, responsive marketing site with a CMS for BookGusto, a restaurant booking product, working alongside its UI/UX designers.",
+      "seoTitle": "BookGusto – Next.js, Strapi and Stripe Marketing Site Case Study",
+      "seoDescription": "How I built BookGusto's marketing site with Next.js, Tailwind and Strapi, pulling pricing and plan details from Stripe and tuning it for SEO and Lighthouse.",
       "caseStudy": {
-        "problem": "BookGusto needed a marketing site to introduce its restaurant booking product. It had to look polished on every screen size, load quickly, and let the team update copy without a developer.",
+        "problem": "BookGusto is a restaurant management system that brings ePOS, menus, stock and staff into one login. Before launch it needed a marketing site that explained the product clearly, ranked well in search and loaded fast on the phones restaurant owners actually use.\n\nPricing was the awkward part. Plans, prices and what each tier includes were already set up in Stripe for billing. Copying them by hand into the website would mean two sources of truth, and sooner or later the site would advertise a price or feature that the checkout didn't match. The rest of the copy also needed to change often without waiting on a developer.",
         "features": [
           {
-            "title": "Responsive landing page",
-            "body": "Built from the designers' layouts, tuned to work cleanly from small phones up to wide desktops.",
-            "image": "/images/bookgusto-landing.png",
-            "imageAlt": "BookGusto landing page hero section"
+            "title": "Pricing pulled straight from Stripe",
+            "body": "The pricing page reads products and prices from Stripe, along with metadata on each product such as the tier name, its feature list and which plan to highlight. When a price or tier changes in Stripe, the website follows, so the site and the checkout can't drift apart.",
+            "image": "",
+            "imageAlt": "BookGusto pricing tiers generated from Stripe products"
           },
           {
-            "title": "Editable content",
-            "body": "Copy and sections are managed through a CMS, so the team can make changes without a code deploy.",
+            "title": "Content managed in Strapi",
+            "body": "Page copy, the feature overview and the guides section live in Strapi, so the team can update wording, add guides and mark features as coming soon without a code deploy.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "Strapi admin editing BookGusto page content"
+          },
+          {
+            "title": "Feature overview",
+            "body": "A scannable grid covering menu designer, stock management, delivery integrations, payroll, CCTV and accountancy integrations, with clear coming-soon labels so visitors know what's live today.",
+            "image": "/images/bookgusto-landing.png",
+            "imageAlt": "BookGusto feature overview section"
+          },
+          {
+            "title": "Responsive, accessible front end",
+            "body": "Built from the designers' layouts and tuned to work cleanly from small phones up to wide desktops, with semantic markup and proper heading structure throughout.",
+            "image": "",
+            "imageAlt": "BookGusto site on mobile and desktop"
           }
         ],
         "decisions": [
           {
-            "title": "Performance first",
-            "body": "Kept the page lean (optimised images, minimal JavaScript) so it scored near-perfect on Lighthouse. For a landing page, speed is part of the pitch."
+            "title": "Stripe as the source of truth for pricing",
+            "body": "Rather than storing prices in the CMS, the site reads them from Stripe, and the extra tier details live in Stripe product metadata. Billing and marketing share one set of data, and nobody has to remember to update the website when pricing changes."
+          },
+          {
+            "title": "Strapi for everything that isn't pricing",
+            "body": "A headless CMS let the team own the copy and guides while I owned the front end. Keeping pricing out of Strapi meant each system had one clear job."
+          },
+          {
+            "title": "Pre-rendered pages for speed and SEO",
+            "body": "Pages are rendered ahead of time with Next.js rather than built in the browser, so search engines get complete HTML and visitors get a fast first paint. Content from Strapi and Stripe is refreshed in the background instead of fetched on every visit."
+          },
+          {
+            "title": "SEO built in, not bolted on",
+            "body": "Every page gets its own title, description and Open Graph tags, plus structured data, a sitemap and clean URLs. The guides section gives the site useful, indexable content beyond the sales pages."
+          },
+          {
+            "title": "A strict performance budget",
+            "body": "Optimised and correctly sized images, self-hosted fonts and minimal client-side JavaScript kept the site scoring near-perfect on Lighthouse. For a product pitched on making restaurants run smoothly, a slow website would undercut the message."
           }
         ],
         "stack": [
           {
-            "name": "TODO",
-            "why": "TODO: confirm the stack used for BookGusto."
+            "name": "Next.js",
+            "why": "Pre-rendered pages with background refresh, so the site is fast and fully indexable while still pulling live content and pricing."
+          },
+          {
+            "name": "Tailwind CSS",
+            "why": "Quick, consistent styling from the design system without shipping a heavy CSS bundle."
+          },
+          {
+            "name": "Strapi",
+            "why": "Headless CMS so the team can edit copy, features and guides without a developer."
+          },
+          {
+            "name": "Stripe",
+            "why": "Products, prices and tier metadata feed the pricing page, keeping it in sync with billing."
           }
         ],
         "outcomeTitle": "Outcome",
-        "outcome": "The landing page shipped. The wider restaurant management system it was meant to support didn't move past that stage.",
+        "outcome": "The marketing site shipped with pricing that stays in step with Stripe, content the team can manage themselves, and near-perfect Lighthouse scores. The wider restaurant management system it was built to support didn't move past that stage, but the site did its job: a fast, search-friendly front door that's cheap to keep up to date.",
         "testimonial": {
           "quote": "",
           "author": ""
         },
-        "ctaText": "Need a website like this for your business?",
+        "ctaText": "Need a fast, search-friendly website your team can update themselves?",
         "ctaHref": "/services/websites"
       }
     },
